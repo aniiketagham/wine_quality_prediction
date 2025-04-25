@@ -1,3 +1,23 @@
 from src.wine_quality import logger
+from src.wine_quality.pipelines.data_ingestion_pipeline import DataIngestionTrainingPipeline
+from src.wine_quality.pipelines.data_validation_pipeline import DataValidationTrainingPipeline
 
-logger.info("Welcome to our custom logging wine_quality")
+STAGE_NAME= "Data Ingestion Stage"
+try:
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<")
+    data_ingestion = DataIngestionTrainingPipeline()
+    data_ingestion.initiate_data_ingestion()
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+        logger.exception(e)
+        raise e
+
+STAGE_NAME= "Data Validation Stage"
+try:
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<")
+    data_validation = DataValidationTrainingPipeline()
+    data_validation.initiate_data_ingestion()
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+        logger.exception(e)
+        raise e
